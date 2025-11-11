@@ -31,8 +31,8 @@ export function LoginForm() {
 
     try {
       const url = isRegistering
-        ? "http://localhost:8080/api/usuario/registrar"
-        : "http://localhost:8080/api/usuario/login"
+        ? "https://api-usuario-tj78.onrender.com/api/usuario/registrar"
+        : "https://api-usuario-tj78.onrender.com/api/usuario/login"
 
       const response = await fetch(url, {
         method: "POST",
@@ -50,7 +50,7 @@ export function LoginForm() {
           localStorage.setItem("token", token)
 
           try {
-            const userRes = await fetch("http://localhost:8080/api/usuario/me", {
+            const userRes = await fetch("https://api-usuario-tj78.onrender.com/api/usuario/me", {
               headers: { Authorization: `Bearer ${token}` },
             })
 
@@ -61,12 +61,12 @@ export function LoginForm() {
             localStorage.setItem("usuario", JSON.stringify(userData.usuario))
 
             const encodedToken = encodeURIComponent(token)
-            window.location.href = `http://localhost:3001/?token=${encodedToken}`
+            window.location.href = `https://api-usuario-tj78.onrender.com/?token=${encodedToken}`
           } catch (err) {
             console.error("Error obteniendo usuario:", err)
             alert("Error al cargar datos del usuario.")
           }
-        } 
+        }
         else {
           setIsRegistering(false)
           setFullName("")
@@ -104,15 +104,15 @@ export function LoginForm() {
           animation: pulse-glow 3s ease-in-out infinite;
         }
       `}</style>
-      
+
       {/* Background decorative elements */}
       <div className="fixed top-10 left-10 opacity-20 animate-float">
         <Brain className="h-24 w-24 text-purple-400" />
       </div>
-      <div className="fixed bottom-10 right-10 opacity-20 animate-float" style={{animationDelay: '2s'}}>
+      <div className="fixed bottom-10 right-10 opacity-20 animate-float" style={{ animationDelay: '2s' }}>
         <Heart className="h-24 w-24 text-purple-300" />
       </div>
-      
+
       <div className="w-full max-w-md px-4 z-10">
         {/* Logo/Header Section */}
         <div className="mb-8 text-center">
@@ -139,7 +139,7 @@ export function LoginForm() {
               {isRegistering ? "Completa tus datos para registrarte" : "Ingresa a tu cuenta para continuar"}
             </p>
           </div>
-          
+
           <form onSubmit={handleSubmit} className="space-y-5">
             {isRegistering && (
               <>
