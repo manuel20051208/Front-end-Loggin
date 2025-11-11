@@ -61,7 +61,7 @@ export function LoginForm() {
             localStorage.setItem("usuario", JSON.stringify(userData.usuario))
 
             const encodedToken = encodeURIComponent(token)
-            window.location.href = `https://api-usuario-tj78.onrender.com/?token=${encodedToken}`
+            window.location.href = `https://front-end-menu-app-cyan.vercel.app/?token=${encodedToken}`
           } catch (err) {
             console.error("Error obteniendo usuario:", err)
             alert("Error al cargar datos del usuario.")
